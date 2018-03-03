@@ -1,6 +1,5 @@
 var orderName;
 
-init();
 function init() {
     var imgName = getImgName();
     console.log(imgName);
@@ -46,6 +45,7 @@ function readJSON(path) {
             var arr = JSON.parse(fileReader.result);
             // console.log(arr.orders[0].name);
             listOfNames = arr.orders;
+            init();
           });
           fileReader.readAsText(file);
       } 
