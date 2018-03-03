@@ -1,4 +1,16 @@
 var orderName;
+
+init();
+function init() {
+    var imgName = getImgName();
+    console.log(imgName);
+    orderName = imgName.substring(0, imgName.length() - 6);
+    var imgPath = "resources/images/" + imgName;
+    console.log("imgPath:" + imgPath);
+    console.log("orderName:" + orderName);
+    changeImage(imgPath)
+}
+
 let submit = document.querySelector("#submit");
 submit.addEventListener("click", function() {
     //get user input & compare with current image's order name
@@ -20,9 +32,8 @@ function changeImage(path) {
     document.querySelector("#insect").src = path;
 }
 
-var res = readJSON("resources/images.json");
-console.log(res);
-
+readJSON("resources/images.json");
+var listOfNames;
 function readJSON(path) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', path, true);
@@ -32,10 +43,22 @@ function readJSON(path) {
           var file = new File([this.response], 'temp');
           var fileReader = new FileReader();
           fileReader.addEventListener('load', function(){
-               //do stuff with fileReader.result
+            var arr = JSON.parse(fileReader.result);
+            // console.log(arr.orders[0].name);
+            listOfNames = arr.orders;
           });
           fileReader.readAsText(file);
       } 
     }
     xhr.send();
+}
+var visited = new Set()
+function getImgName() {
+    var sz = listOfNames.length;
+    var ind = Math.floor(Math.random() * sz);
+    while (visited.has(ind)) {
+        ind = Math.floor(Math.random() * sz);
+    }
+    visited.add(ind);
+    return listOfNames[ind].name;
 }
