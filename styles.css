@@ -1,0 +1,17 @@
+body {background-color: lightblue;}
+.left {float: left; width: 50%; padding: 30px; box-sizing: border-box;}
+    .left .img-container {
+        box-sizing: border-box;
+        background-color: white;
+        width: 80%;
+        height: 300px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+    .left .img-container img {
+        display: block;
+        max-height: 100%;
+        margin: 0 auto;
+    }
+.right {float: right; width: 50%;}
