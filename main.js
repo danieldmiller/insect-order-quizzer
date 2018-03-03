@@ -20,7 +20,7 @@ next.addEventListener("click", function() {
     //alert("next");
     var imgName = getImgName();
     console.log(imgName);
-    orderName = imgName.substring(0, imgName.length() - 6);
+    orderName = imgName.substring(0, imgName.length - 6);
     var imgPath = "resources/images/" + imgName;
     console.log("imgPath:" + imgPath);
     console.log("orderName:" + orderName);
