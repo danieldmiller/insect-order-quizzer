@@ -13,7 +13,19 @@ function init() {
 
 let submit = document.querySelector("#submit");
 let input;
+
 submit.addEventListener("click", function() {
+    submit();
+});
+
+document.addEventListener("keypress", function() {
+    const key = e.which || e.keyCode;
+    if (key === 13) { // 13 is enter
+        submit();
+    }
+});
+
+function submit() {
     //get user input & compare with current image's order name
     input = document.querySelector("input").value;
     if(input === orderName) {
@@ -27,12 +39,19 @@ submit.addEventListener("click", function() {
         } else {
             alert("Wrong. Try again.");
         }
-        
-        
     }
-});
+
+    var inputElem = document.querySelector("input");
+    document.getElementById(inputElem).focus();
+    document.getElementById(inputElem).select();
+}
 
 function next() {
+    if(!input) {
+        input = document.querySelector("input").value;
+    }
+    input.value = "";
+
     tryCount = 0;
     var imgName = getImgName();
     console.log(imgName);
