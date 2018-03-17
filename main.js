@@ -18,7 +18,7 @@ submitButton.addEventListener("click", function() {
     submit();
 });
 
-document.addEventListener("keypress", function() {
+document.addEventListener("keypress", function(e) {
     const key = e.which || e.keyCode;
     if (key === 13) { // 13 is enter
         submit();
@@ -42,8 +42,8 @@ function submit() {
     }
 
     var inputElem = document.querySelector("input");
-    document.getElementById(inputElem).focus();
-    document.getElementById(inputElem).select();
+    inputElem.focus();
+    inputElem.select();
 }
 
 function next() {
