@@ -1,4 +1,5 @@
 var orderName;
+var tryCount = 0;
 
 function init() {
     var imgName = getImgName();
@@ -11,20 +12,47 @@ function init() {
 }
 
 let submit = document.querySelector("#submit");
+let input;
 submit.addEventListener("click", function() {
     //get user input & compare with current image's order name
+    input = document.querySelector("input").val;
+    if(input === orderName) {
+        next();
+    } else {
+        tryCount++;
+        if(tryCount === 3) {
+            alert("Wrong. The correct answer was: " + orderName);
+            visited.delete(orderName);
+            next();
+        } else {
+            alert("Wrong. Try again.");
+        }
+        
+        
+    }
 });
 
-let next = document.querySelector("#next");
-next.addEventListener("click", function() {
-    //alert("next");
+function next() {
+    tryCount = 0;
     var imgName = getImgName();
     console.log(imgName);
     orderName = imgName.substring(0, imgName.length - 6);
     var imgPath = "resources/images/" + imgName;
     console.log("imgPath:" + imgPath);
     console.log("orderName:" + orderName);
-    changeImage(imgPath)
+    changeImage(imgPath);
+}
+
+let nextButton = document.querySelector("#next");
+nextButton.addEventListener("click", function() {
+    //alert("next");
+    // var imgName = getImgName();
+    // console.log(imgName);
+    // orderName = imgName.substring(0, imgName.length - 6);
+    // var imgPath = "resources/images/" + imgName;
+    // console.log("imgPath:" + imgPath);
+    // console.log("orderName:" + orderName);
+    // changeImage(imgPath);
 });
 
 function changeImage(path) {
@@ -52,7 +80,7 @@ function readJSON(path) {
     }
     xhr.send();
 }
-var visited = new Set()
+var visited = new Set(); //records all indexes that have been encountered
 function getImgName() {
     var sz = listOfNames.length;
     var ind = Math.floor(Math.random() * sz);
