@@ -11,10 +11,10 @@ function init() {
     changeImage(imgPath)
 }
 
-let submit = document.querySelector("#submit");
+let submitButton = document.querySelector("#submit");
 let input;
 
-submit.addEventListener("click", function() {
+submitButton.addEventListener("click", function() {
     submit();
 });
 
