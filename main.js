@@ -12,7 +12,7 @@ function init() {
 }
 
 let submitButton = document.querySelector("#submit");
-let input;
+let inputVal;
 
 submitButton.addEventListener("click", function() {
     submit();
@@ -27,8 +27,8 @@ document.addEventListener("keypress", function() {
 
 function submit() {
     //get user input & compare with current image's order name
-    input = document.querySelector("input").value;
-    if(input === orderName) {
+    inputVal = document.querySelector("input").value;
+    if(inputVal === orderName) {
         next();
     } else {
         tryCount++;
@@ -47,10 +47,10 @@ function submit() {
 }
 
 function next() {
-    if(!input) {
-        input = document.querySelector("input").value;
+    if(!inputVal) {
+        inputVal = document.querySelector("input").value;
     }
-    input.value = "";
+    inputVal = "";
 
     tryCount = 0;
     var imgName = getImgName();
