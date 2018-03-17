@@ -50,7 +50,7 @@ function next() {
     if(!inputVal) {
         inputVal = document.querySelector("input").value;
     }
-    inputVal = "";
+    document.querySelector("input").value = "";
 
     tryCount = 0;
     var imgName = getImgName();
