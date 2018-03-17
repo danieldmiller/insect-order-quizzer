@@ -15,7 +15,7 @@ let submit = document.querySelector("#submit");
 let input;
 submit.addEventListener("click", function() {
     //get user input & compare with current image's order name
-    input = document.querySelector("input").val;
+    input = document.querySelector("input").value;
     if(input === orderName) {
         next();
     } else {
