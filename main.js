@@ -43,18 +43,6 @@ function next() {
     changeImage(imgPath);
 }
 
-let nextButton = document.querySelector("#next");
-nextButton.addEventListener("click", function() {
-    //alert("next");
-    // var imgName = getImgName();
-    // console.log(imgName);
-    // orderName = imgName.substring(0, imgName.length - 6);
-    // var imgPath = "resources/images/" + imgName;
-    // console.log("imgPath:" + imgPath);
-    // console.log("orderName:" + orderName);
-    // changeImage(imgPath);
-});
-
 function changeImage(path) {
     document.querySelector("#insect").src = path;
 }
